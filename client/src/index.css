@@ -1,0 +1,161 @@
+/* Use the uploaded screenshot as a subtle background accent.
+   Local file path used exactly as requested. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+
+:root{
+  --bg-1: #020417;
+  --bg-2: #06102a;
+  --card: rgba(255,255,255,0.03);
+  --muted: #9aa4b2;
+  --accent: #60a5fa;
+  --glass: rgba(255,255,255,0.03);
+}
+
+/* page */
+html,body,#root { height:100%; }
+body{
+  margin:0;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #e6eef8;
+  -webkit-font-smoothing:antialiased;
+  background:
+    radial-gradient(1200px 600px at 10% 10%, rgba(96,165,250,0.04), transparent 6%),
+    radial-gradient(900px 400px at 90% 80%, rgba(96,165,250,0.03), transparent 10%),
+    linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
+  background-attachment:fixed;
+  padding: 28px 20px;
+  box-sizing: border-box;
+}
+
+/* decorate with the uploaded image (very subtle, large, low opacity) */
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url('/mnt/data/27f0fbde-f108-4818-aa5f-27766ca01294.png');
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: 40%;
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(2px);
+}
+
+/* container */
+.app-container {
+  max-width: 1200px;
+  margin: 28px auto;
+  z-index: 1;
+  position: relative;
+}
+
+/* card */
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 12px;
+  box-shadow: 0 6px 30px rgba(2,6,23,0.6);
+}
+
+/* spacing helpers */
+.header {
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.header-left { display:flex; gap:12px; align-items:center; }
+.header-title { font-weight:700; font-size:22px; letter-spacing: -0.2px; }
+.header-sub { font-size:13px; color:var(--muted); }
+
+/* Quick card */
+.quick-card { padding: 18px; margin-bottom: 14px; }
+
+/* grid layout */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+/* Editor panel */
+.editor-panel {
+  min-height: 520px;
+  border-radius: 10px;
+  overflow: hidden;
+  display:flex;
+  flex-direction: column;
+}
+.editor-top {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  background: rgba(255,255,255,0.01);
+}
+.editor-top .meta { color: var(--muted); font-size: 13px; }
+.editor-wrap { flex:1; }
+
+/* Output panel */
+.output-panel {
+  min-height: 520px;
+  padding: 12px;
+  border-radius: 10px;
+  display:flex;
+  flex-direction:column;
+}
+.output-head {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding: 8px 4px;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  margin-bottom: 8px;
+}
+.output-body {
+  flex:1;
+  padding: 12px;
+  overflow:auto;
+  color: #dbeafe;
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+/* Action bar */
+.actions {
+  margin-top: 16px;
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+.btn {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight:600;
+}
+.btn-primary {
+  background: linear-gradient(90deg,#2563eb,#60a5fa);
+  color: white;
+  box-shadow: 0 6px 18px rgba(37,99,235,0.14);
+}
+.btn-ghost {
+  background: transparent;
+  color: #cfe7ff;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+/* small muted text */
+.small-muted { color: var(--muted); font-size: 13px; }
+
+/* responsive */
+@media (max-width: 980px) {
+  .grid-2 { grid-template-columns: 1fr; }
+  body::before { background-size: 60%; right: -10%; bottom: -10%; }
+}

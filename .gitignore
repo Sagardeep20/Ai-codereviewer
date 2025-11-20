@@ -1,0 +1,18 @@
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# builds
+dist/
+build/
+
+# envs / secrets
+.env
+.env.local
+.env.*.local
+
+# OS / editors
+.DS_Store
+.vscode/
+.idea/
