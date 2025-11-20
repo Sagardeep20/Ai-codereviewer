@@ -4,8 +4,7 @@ import reviewRoute from "./routes/review.route.js";
 
 const app = express();
 
-// dev CORS; change for production
-app.use(cors({ origin: "http://localhost:5173" })); 
+app.use(cors({ origin: process.env.CLIENT_ORIGIN || "http://localhost:5173" }));
 
 app.use(express.json({ limit: "1mb" }));
 app.use("/api", reviewRoute);
